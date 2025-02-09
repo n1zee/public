@@ -1,4 +1,4 @@
-import './bootstrap';
+import './bootstrap.js';
 import '../css/app.css';
 
 import { LaravelReactI18nProvider } from 'laravel-react-i18n';
@@ -17,14 +17,17 @@ const appName = import.meta.env.VITE_APP_NAME || 'Cashbacker';
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) =>
-        resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
+        resolvePageComponent(
+            `./pages/${name}.tsx`,
+            import.meta.glob('./pages/**/*.tsx')
+        ),
     setup({ el, App, props }) {
         const initialLang = props.initialPage.props.localeData as any;
 
         const appElement = (
             <LaravelReactI18nProvider
                 locale={initialLang.languageCode}
-                fallbackLocale="en"
+                fallbackLocale='en'
                 files={import.meta.glob('/lang/*.json')}
             >
                 <App {...props} />
@@ -39,6 +42,6 @@ createInertiaApp({
         hydrateRoot(el, appElement);
     },
     progress: {
-        color: '#21C063',
-    },
+        color: '#21C063'
+    }
 });

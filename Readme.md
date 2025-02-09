@@ -11,4 +11,4 @@ Backend: NodeJS (AdonisJS) [link](/booking-service/).
 
 ### 3. Cashback marketplace
 
-PHP (Laravel) + React (View) + Ton connect integration for tgapp [link](/discount-marketplace/).
+PHP (Laravel) + React (View) + Ton connect integration for tgapp [link](/cashback-marketplace/).
