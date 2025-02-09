@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --tg-theme-text-color: #fff;
+}
+
+@layer base {
+    ::-webkit-scrollbar {
+        @apply w-0;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-inherit;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply  bg-inherit;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply  bg-inherit;
+    }
+}
+
+html {
+    @apply h-full;
+}
+
+body {
+    @apply font-sans text-base bg-background min-h-full;
+}
+
+.tg-ui {
+    @apply min-h-full;
+}
+
+.wrapper {
+    @apply mx-auto max-w-[500px] relative min-h-full;
+    padding-top: calc(var(--tg-viewport-safe-area-inset-top) + 20px)
+}
+
+.navLinkActive {
+    @apply text-blue;
+}
+
+.navLinkActive svg path {
+    @apply fill-blue;
+}
+
+.categoriesCarousel {
+    @apply grid gap-2 overflow-auto;
+}
+
+.likeBtnActive svg path {
+    @apply fill-blue stroke-blue;
+}
+
+.likeBtn svg path {
+    @apply fill-black stroke-white;
+}
+
+.root__loading {
+    @apply w-full h-screen flex items-center justify-center bg-black;
+}
+
+p {
+    @apply my-4;
+}
+
+.mobile-body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.mobile-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.mobile-content {
+    height: calc(100% + 1px);
+    max-width: 640px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.search-icon-loader {
+    width: 20px;
+    aspect-ratio: 1;
+    display: grid;
+    border-radius: 50%;
+    background:
+            linear-gradient(0deg ,rgb(0 0 0/50%) 30%,#0000 0 70%,rgb(0 0 0/100%) 0) 50%/8% 100%,
+            linear-gradient(90deg,rgb(0 0 0/25%) 30%,#0000 0 70%,rgb(0 0 0/75% ) 0) 50%/100% 8%;
+    background-repeat: no-repeat;
+    animation: l23 1s infinite steps(12);
+}
+
+.search-icon-loader::before,
+.search-icon-loader::after {
+    content: "";
+    grid-area: 1/1;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.915;
+    transform: rotate(30deg);
+}
+.search-icon-loader::after {
+    opacity: 0.83;
+    transform: rotate(60deg);
+}
+
+@keyframes l23 {
+    100% {transform: rotate(1turn)}
+}

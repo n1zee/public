@@ -1,0 +1,18 @@
+image: node:20
+stages:
+  - deploy
+
+deploy_dev:
+  stage: deploy
+  environment:
+    name: $CI_COMMIT_REF_NAME
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add -
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh $SERVER pm2 deploy $ECOSYSTEM_PATH dev setup 2>&1 || true
+    - ssh $SERVER pm2 deploy $ECOSYSTEM_PATH dev --force
+  only:
+    - dev
